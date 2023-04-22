@@ -9,4 +9,4 @@ jobs:
     runs-on: unbuntu-latest
     steps:
       - name: Step name
-        run: echo ${{ jobs }}
+        run: echo ${{ env }}
