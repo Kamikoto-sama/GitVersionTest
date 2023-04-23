@@ -6,7 +6,4 @@ on:
 jobs:
   test:
     name: Job name
-    runs-on: unbuntu-latest
-    steps:
-      - name: Step name
-        run: echo ${{ env }}
+    uses: gittools/actions/gitversion/setup@main
