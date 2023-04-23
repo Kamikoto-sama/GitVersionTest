@@ -2,6 +2,9 @@ name: Test
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+    - master
   
 jobs:
   test:
@@ -9,3 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gittools/actions/gitversion/setup@main
+      - name: Compute SemVer
+        id: ver
+        uses: gittools/actions/gitversion/execute@main
+      - name: Display SemVer
+        run: echo ${{ steps.ver.outputs.semVer }}
