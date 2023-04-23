@@ -11,11 +11,11 @@ jobs:
     name: Job name
     runs-on: ubuntu-latest
     steps:
-      - uses: gittools/actions/gitversion/setup@main
+      - uses: gittools/actions/gitversion/setup@0.10.2
         with:
           versionSpec: '5.x'
       - name: Compute SemVer
         id: ver
-        uses: gittools/actions/gitversion/execute@main
+        uses: gittools/actions/gitversion/execute@0.10.2
       - name: Display SemVer
         run: echo ${{ steps.ver.outputs.semVer }}
