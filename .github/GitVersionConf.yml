@@ -4,6 +4,5 @@ no-bump-message: '.*'
 
 branches:
   master:
-    mode: Mainline
     regex: master
     increment: Patch
