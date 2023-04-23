@@ -1,1 +1,9 @@
+mode: Mainline
+next-version: 1.0.0
+no-bump-message: '.*'
 
+branches:
+  master:
+    mode: Mainline
+    regex: master
+    increment: Patch
