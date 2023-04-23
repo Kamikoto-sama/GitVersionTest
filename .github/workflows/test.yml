@@ -17,7 +17,5 @@ jobs:
       - name: Compute SemVer
         id: ver
         uses: gittools/actions/gitversion/execute@main
-        with:
-          additionalArguments: '/home/runner/work/GitVersionTest'
       - name: Display SemVer
         run: echo ${{ steps.ver.outputs.semVer }}
