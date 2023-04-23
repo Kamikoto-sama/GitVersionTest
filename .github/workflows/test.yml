@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gittools/actions/gitversion/setup@main
+        with:
+          versionSpec: '5.x'
       - name: Compute SemVer
         id: ver
         uses: gittools/actions/gitversion/execute@main
