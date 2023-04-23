@@ -24,4 +24,18 @@ jobs:
           useConfigFile: true
           configFilePath: .github/GitVersionConf.yml
       - name: Display SemVer
-        run: echo ${{ steps.ver.outputs.semVer }}
+        run: echo "${{ steps.ver.outputs.semVer }}"
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{ steps.ver.outputs.semVer }}
+          tag_exists_error: true
+          message: ${{ steps.ver.outputs.semVer }}
+
+      # Print result using the env variable.
+      -  run: |
+          echo "Tag already present: ${{ env.TAG_EXISTS }}"
+
+      # Print result using the action output.
+      - run: |
+          echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
