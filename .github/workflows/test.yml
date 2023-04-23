@@ -20,5 +20,8 @@ jobs:
       - name: Compute SemVer
         id: ver
         uses: gittools/actions/gitversion/execute@main
+        with:
+          useConfigFile: true
+          configFilePath: .github/GitVersionConf.yml
       - name: Display SemVer
         run: echo ${{ steps.ver.outputs.semVer }}
