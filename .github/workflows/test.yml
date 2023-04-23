@@ -6,4 +6,6 @@ on:
 jobs:
   test:
     name: Job name
-    uses: gittools/actions/gitversion/setup@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gittools/actions/gitversion/setup@main
