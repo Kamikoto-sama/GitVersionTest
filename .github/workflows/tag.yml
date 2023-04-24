@@ -1,0 +1,19 @@
+name: Tag
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  
+jobs:
+  tag:
+    name: Tag
+    runs-on: ubuntu-latest
+    steps:
+      - id: ver
+        uses: .github/workflows/build-version@master
+      - run: echo "${{ steps.ver.outputs.semVer }}"
+#       - uses: rickstaa/action-create-tag@v1 
+#         with:
+#          tag: ${{ steps.ver.outputs.semVer }}
