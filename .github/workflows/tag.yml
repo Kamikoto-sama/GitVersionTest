@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: ver
-        uses: GitVersionTest/.github/workflows/build-version@master
+        uses: GitVersionTest/.github/workflows/build-version.yml@master
       - run: echo "${{ steps.ver.outputs.semVer }}"
 #       - uses: rickstaa/action-create-tag@v1 
 #         with:
