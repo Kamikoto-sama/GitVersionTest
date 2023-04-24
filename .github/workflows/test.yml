@@ -5,7 +5,10 @@ on:
   push:
     branches:
     - master
-  
+
+permissions:
+  contents: write
+
 jobs:
   test:
     name: Job name
