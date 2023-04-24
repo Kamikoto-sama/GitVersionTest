@@ -1,0 +1,28 @@
+name: SemVer
+
+on:
+  workflow_call:
+    outputs:
+      semVer: ${{ steps.gitversion.outputs.semVer }}
+
+jobs:
+  semVer:
+    name: Build SemVer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gittools/actions/gitversion/setup@main
+        with:
+          versionSpec: '5.x'
+      - id: gitversion
+        uses: gittools/actions/gitversion/execute@main
+        with:
+          useConfigFile: true
+          configFilePath: .github/GitVersionConf.yml
+      - name: Display SemVer
+        run: echo "${{ steps.gitversion.outputs.semVer }}"
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{ steps.gitversion.outputs.semVer }}
