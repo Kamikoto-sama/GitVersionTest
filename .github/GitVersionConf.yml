@@ -6,3 +6,5 @@ branches:
   master:
     regex: master
     increment: Patch
+    source-branches: [ 'master' ]
+    is-mainline: true
