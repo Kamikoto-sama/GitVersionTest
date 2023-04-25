@@ -3,7 +3,8 @@ name: SemVer
 on:
   workflow_call:
     outputs:
-      semVer: ${{ steps.gitversion.outputs.semVer }}
+      semVer:
+        value: ${{ steps.gitversion.outputs.semVer }}
 
 jobs:
   semVer:
