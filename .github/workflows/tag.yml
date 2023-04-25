@@ -17,4 +17,4 @@ jobs:
     steps:
       - uses: rickstaa/action-create-tag@v1 
         with:
-         tag: ${{ steps.ver.outputs.semVer }}
+         tag: ${{ needs.ver.outputs.semVer }}
