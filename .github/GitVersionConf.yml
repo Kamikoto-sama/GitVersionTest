@@ -1,2 +1,7 @@
 mode: Mainline
-increment: Patch
+
+branches:
+  master:
+    regex: ^master$
+    increment: Patch
+    is-mainline: true
