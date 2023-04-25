@@ -1,9 +1,3 @@
 mode: Mainline
 no-bump-message: '.*'
-
-branches:
-  master:
-    regex: master
-    increment: Patch
-    source-branches: [ 'master' ]
-    is-mainline: true
+increment: Patch
