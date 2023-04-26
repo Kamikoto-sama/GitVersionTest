@@ -1,6 +1,8 @@
-mode: Mainline
+mode: ContinuousDelivery
+next-version: 1.0.0
 
 branches:
   master:
     regex: ^master$
     increment: Patch
+    mode: ContinuousDelivery
