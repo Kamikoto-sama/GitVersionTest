@@ -21,6 +21,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set tag
-        run: git tag -a $VERSION -m "Release $VERSION"
+        run: 'git tag -a $VERSION -m "Release $VERSION"'
       - name: Push tag
-        run: git push origin
+        run: 'git push origin'
