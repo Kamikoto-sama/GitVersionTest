@@ -3,6 +3,8 @@ name: Debug
 on:
   push:
     paths: .github/workflows/debug.yml
+
+  workflow_dispatch:
     
 jobs:
   debug:
