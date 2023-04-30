@@ -1,0 +1,11 @@
+name: Debug
+
+on:
+  push:
+    paths: .github/workflows/debug.yml
+    
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github }}"
