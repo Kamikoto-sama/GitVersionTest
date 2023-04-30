@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: ver
     env:
-      VERISON: ${{ needs.ver.outputs.semVer }}
+      VERSION: ${{ needs.ver.outputs.semVer }}
     steps:
       - uses: actions/checkout@v3
         with:
