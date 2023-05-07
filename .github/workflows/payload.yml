@@ -1,0 +1,28 @@
+on:
+  workflow_run:
+    workflows: "Tag with SemVer"
+    types:
+      - completed
+      
+jobs:
+  get-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: $TAG
+    steps:
+       - uses: actions/checkout@v3
+       - name: Set tag to env
+         run: echo "TAG=$(git tag --contains ${{ github.sha }})" >> $GITHUB_ENV
+       - name: Print tag
+         run: echo $TAG
+         
+  do-work:
+    runs-on: ubuntu-latest
+    needs: get-tag
+    if: jobs.outputs.tag
+    env:
+      TAG: ${{ jobs.outputs.tag }}
+    steps:
+    - name: Work
+      run: echo $TAG
+       
