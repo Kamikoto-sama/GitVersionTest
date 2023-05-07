@@ -13,6 +13,7 @@ jobs:
       tag: $TAG
     steps:
        - uses: actions/checkout@v3
+       - run: git tag --contains ${{ github.sha }}
        - name: Set tag to env
          run: echo "TAG=$(git tag --contains ${{ github.sha }})" >> $GITHUB_ENV
        - name: Print tag
@@ -21,7 +22,7 @@ jobs:
   do-work:
     runs-on: ubuntu-latest
     needs: get-tag
-    if: needs.get-tag.outputs.tag
+    if: needs.get-tag.outputs.tag != ''
     env:
       TAG: ${{ needs.get-tag.outputs.tag }}
     steps:
