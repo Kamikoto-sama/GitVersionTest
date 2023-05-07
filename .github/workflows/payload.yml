@@ -23,7 +23,7 @@ jobs:
     needs: get-tag
     if: jobs.outputs.tag
     env:
-      TAG: ${{ jobs.get-tag.outputs.tag }}
+      TAG: ${{ needs.get-tag.outputs.tag }}
     steps:
     - name: Work
       run: echo $TAG
