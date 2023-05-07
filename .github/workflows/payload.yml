@@ -13,6 +13,8 @@ jobs:
       tag: $TAG
     steps:
        - uses: actions/checkout@v3
+         with:
+            fetch-depth: 0
        - run: git tag --contains ${{ github.sha }}
        - name: Set tag to env
          run: echo "TAG=$(git tag --contains ${{ github.sha }})" >> $GITHUB_ENV
