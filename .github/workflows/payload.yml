@@ -1,3 +1,5 @@
+name: Do work
+
 on:
   workflow_run:
     workflows: "Tag with SemVer"
