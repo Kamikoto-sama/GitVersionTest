@@ -5,6 +5,9 @@ on:
     branches: master
     tags-ignore: "**"
 
+permissions:
+  contents: write
+
 jobs:
   build-tag:
     runs-on: ubuntu-latest
@@ -22,6 +25,6 @@ jobs:
           configFilePath: .github/GitVersionConf.yml
       - name: Display SemVer
         run: echo "${{ steps.gitversion.outputs.semVer }}"
-      - uses: rickstaa/action-create-tag@v1 
+      - uses: rickstaa/action-create-tag@v1
         with:
          tag: ${{ steps.gitversion.outputs.semVer }}
