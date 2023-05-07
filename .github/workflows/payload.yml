@@ -10,7 +10,7 @@ jobs:
   get-tag:
     runs-on: ubuntu-latest
     outputs:
-      tag: $TAG
+      tag: ${{ env.TAG }}
     steps:
        - uses: actions/checkout@v3
          with:
@@ -26,8 +26,8 @@ jobs:
     needs: get-tag
     if: needs.get-tag.outputs.tag != ''
     env:
-      TAG: ${{ needs.get-tag.outputs.tag }}
+      VER: ${{ needs.get-tag.outputs.tag }}
     steps:
     - name: Work
-      run: echo $TAG
+      run: echo $VER
        
