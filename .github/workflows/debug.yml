@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set env
-        run: echo "TAG=$(git tag --contains ${{ github.sha }})" >> $GITHUB_ENV
+      - run: export TAG=$(git tag --contains ${{ github.sha }})
       - run: echo $TAG
+      - run: echo "TAG=$TAG" >> $GITHUB_ENV
+      - run: echo ${{ env.TAG}}
