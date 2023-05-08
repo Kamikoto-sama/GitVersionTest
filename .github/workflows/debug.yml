@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  XXX: aboba
+  XXX: asdsad
 
 jobs:
   debug:
