@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Do work
         run: echo "Work done"
-        if: ${{ contains(env.DIFF, '.github/workflows/debug.yml') }}
+        if: env.DIFF
       - name: Run anyway
         run: |
           for changed_file in $DIFF; do
