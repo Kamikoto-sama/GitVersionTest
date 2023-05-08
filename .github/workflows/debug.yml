@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Do work
         run: echo "Work done"
-        if: needs.get-diff.outputs.has_diff
+        if: needs.get-diff.outputs.has_diff == true
       - name: Run anyway
         run: |
           for changed_file in $DIFF; do
