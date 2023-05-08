@@ -19,12 +19,14 @@ jobs:
   
   debug:
     runs-on: ubuntu-latest
+    env:
+      DIFF: ${{ jobs.get-diff.outputs.diff }}
     steps:
       - name: Do work
         run: echo "Work done"
-        if: ${{ contains(jobs.outputs.diff, '.github/workflows/debug.yml') }}
+        if: ${{ contains($DIFF, '.github/workflows/debug.yml') }}
       - name: Run anyway
         run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
+          for changed_file in $DIFF; do
             echo "${changed_file}"
           done
