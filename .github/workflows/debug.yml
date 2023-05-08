@@ -9,7 +9,10 @@ on:
     types:
       - completed
   workflow_dispatch:
-
+    inputs:
+      ignore_diff:
+        type: boolean
+        default: true
 env:
   PATHS_REGEX: ^App1|debug.yml
 
