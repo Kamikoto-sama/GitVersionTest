@@ -2,9 +2,6 @@ name: Debug
 
 on: [push, workflow_dispatch]
 
-env:
-  XXX: asdsad
-
 jobs:
   get-diff:
     runs-on: ubuntu-latest
