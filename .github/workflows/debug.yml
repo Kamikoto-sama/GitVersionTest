@@ -14,7 +14,7 @@ jobs:
   get-diff:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ env.DIFF }}
+      diff: ${{ env.DIFF == 0 && env.DIFF || '' }}
     steps:
       - uses: actions/checkout@v3
         with:
