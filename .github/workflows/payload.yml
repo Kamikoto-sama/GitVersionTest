@@ -19,9 +19,9 @@ jobs:
         with:
           fetch-depth: 2
       - name: Get diff count
-        run: echo "DIFF=$(git diff ${{ github.sha }} --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
+        run: echo "DIFF=$(git diff ${{ github.sha }} ${{ github.sha }}^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
       - name: Print diff
-        run: echo $DIFF
+        run: git diff ${{ github.sha }} ${{ github.sha }}^ --name-only
 
   get-tag:
     runs-on: ubuntu-latest
