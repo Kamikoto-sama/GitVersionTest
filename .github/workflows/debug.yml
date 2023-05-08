@@ -6,13 +6,13 @@ jobs:
   get-diff:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ steps.files.outputs.all }}
+      diff: ${{ join(steps.files.outputs.diff) }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - id: files
-        uses: jitterbit/get-changed-files@v1
+        uses: technote-space/get-diff-action@v4.0.1
   
   debug:
     runs-on: ubuntu-latest
