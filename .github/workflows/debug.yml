@@ -24,7 +24,7 @@ jobs:
         run: echo "Work done"
         if: ${{ contains(jobs.outputs.diff, '.github/workflows/debug.yml') }}
       - name: Run anyway
-      - run: |
+        run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             echo "${changed_file}"
           done
