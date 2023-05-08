@@ -13,6 +13,10 @@ jobs:
           fetch-depth: 0
       - id: files
         uses: technote-space/get-diff-action@v4.0.1
+        with:
+          FILES: |
+            App1/appcode.txt
+            .github/workflows/debug.yml
   
   debug:
     runs-on: ubuntu-latest
