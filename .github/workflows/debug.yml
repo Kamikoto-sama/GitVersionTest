@@ -20,7 +20,13 @@ env:
 jobs:
   debug:
     runs-on: ubuntu-latest
-    if: inputs.ignore_diff
     steps:
-      - name: Do work
-        run: echo "${{ toJson(github.event.inputs) }}"
+       - uses: actions/checkout@v3
+         with:
+            fetch-depth: 0
+
+  print:
+    runs-on: ubuntu-latest
+    needs: debug
+    steps:
+      - run: git tag -l | tail -n 1
