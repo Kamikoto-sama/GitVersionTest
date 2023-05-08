@@ -20,9 +20,8 @@ jobs:
         with:
           fetch-depth: 0
       - name: Get diff files
-        run: |
-          echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
-          echo $DIFF
+        run: echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
+      - run: echo "${{ env.DIFF }}"
   
   debug:
     runs-on: ubuntu-latest
