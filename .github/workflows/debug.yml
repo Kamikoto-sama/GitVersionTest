@@ -1,26 +1,26 @@
 name: Debug
 
 on: 
+  push:
   workflow_run:
     workflows: "Tag with SemVer"
     types:
       - completed
 
+env:
+  PATHS_REGEX: ^App1|debug.yml
+
 jobs:
   get-diff:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ join(steps.files.outputs.diff) }}
+      diff: ${{ env.DIFF }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - id: files
-        uses: technote-space/get-diff-action@v4.0.1
-        with:
-          PATTERNS: |
-            App1/appcode.txt
-            .github/workflows/debug.yml
+      - name: Get diff files
+        run: echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -E '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
   
   debug:
     runs-on: ubuntu-latest
