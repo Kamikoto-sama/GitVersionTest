@@ -14,11 +14,11 @@ jobs:
   get-diff:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ env.DIFF != '0' && env.DIFF || '' }}
+      has_diff: ${{ env.DIFF != '0' }}
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 2
       - name: Get diff files
         run: echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
       - run: echo "${{ env.DIFF }}"
@@ -27,11 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-diff
     env:
-      DIFF: ${{ needs.get-diff.outputs.diff }}
+      DIFF: ${{ needs.get-diff.outputs.has_diff }}
     steps:
       - name: Do work
         run: echo "Work done"
-        if: env.DIFF
+        if: needs.get-diff.outputs.has_diff
       - name: Run anyway
         run: |
           for changed_file in $DIFF; do
