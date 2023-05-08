@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       ignore_diff:
+        description: Aba asda
         type: boolean
         default: true
 env:
