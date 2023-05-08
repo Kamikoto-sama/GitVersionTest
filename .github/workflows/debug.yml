@@ -3,7 +3,7 @@ name: Debug
 on: 
   push:
   workflow_run:
-    workflows: "Tag with SemVer"
+    workflows: ["Tag with SemVer"]
     types:
       - completed
 
