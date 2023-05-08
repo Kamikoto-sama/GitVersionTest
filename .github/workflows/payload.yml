@@ -7,9 +7,7 @@ on:
       - completed
 
 env:
-  PATHS_REGEX: |
-    ^App2
-    payload.yml
+  PATHS_REGEX: ^App2|payload.yml
 
 jobs:
   get-diff:
