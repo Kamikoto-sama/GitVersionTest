@@ -9,10 +9,6 @@ on:
     types:
       - completed
   workflow_dispatch:
-    inputs:
-      ignore_diff:
-        type: boolean
-        default: true
 
 env:
   PATHS_REGEX: ^App1|debug.yml
@@ -22,4 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do work
-        run: echo "${{ toJson(github.event.workflow_dispatch) }}"
+        run: echo "${{ toJson(github.event.inputs) }}"
