@@ -20,6 +20,7 @@ env:
 jobs:
   debug:
     runs-on: ubuntu-latest
+    if: inputs.ignore_diff
     steps:
       - name: Do work
         run: echo "${{ toJson(github.event.inputs) }}"
