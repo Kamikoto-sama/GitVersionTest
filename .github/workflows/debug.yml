@@ -14,13 +14,15 @@ jobs:
   get-diff:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ env.DIFF == 0 && env.DIFF || '' }}
+      diff: ${{ env.DIFF != '0' && env.DIFF || '' }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Get diff files
-        run: echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
+        run: |
+          echo "DIFF=$(git diff HEAD HEAD^ --name-only | grep -cE '${{ env.PATHS_REGEX }}')" >> $GITHUB_ENV
+          echo $DIFF
   
   debug:
     runs-on: ubuntu-latest
