@@ -19,7 +19,4 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-       - if: inputs.fail 
-         run: |
-          echo "Action failed"
-          exit 1
+       - run: echo "${{ github.event }}"
