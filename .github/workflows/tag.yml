@@ -25,6 +25,12 @@ jobs:
           configFilePath: .github/GitVersionConf.yml
       - name: Display SemVer
         run: echo "${{ steps.gitversion.outputs.semVer }}"
-      - uses: rickstaa/action-create-tag@v1
+      - uses: actions/github-script@v5
         with:
-         tag: ${{ steps.gitversion.outputs.semVer }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ steps.gitversion.outputs.semVer }}',
+              sha: context.sha
+            })
