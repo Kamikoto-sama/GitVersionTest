@@ -10,22 +10,16 @@ on:
       - completed
   workflow_dispatch:
     inputs:
-      ignore_diff:
-        description: Aba asda
+      fail:
+        description: Fail
         type: boolean
-        default: true
-env:
-  PATHS_REGEX: ^App1|debug.yml
+        default: false
 
 jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-       - run: echo "TAG=AVOVA" >> $GITHUB_ENV
-       - run: echo $TAG
-
-  print:
-    runs-on: ubuntu-latest
-    needs: debug
-    steps:
-      - run: echo $TAG
+       - if: inputs.fail 
+         run: |
+          echo "Action failed"
+          exit 1
