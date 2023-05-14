@@ -10,4 +10,4 @@ branches:
   master:
     regex: ^master$
     increment: Patch
-    mode: ContinuousDelivery
+    is-mainline: true
