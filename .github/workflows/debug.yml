@@ -19,4 +19,10 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-       - run: echo "${{ toJSON(github.event) }}"
+      - name: Dowload artifacts
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: version-tag
+      - name: Display version
+        run: cat version-tag
+          
