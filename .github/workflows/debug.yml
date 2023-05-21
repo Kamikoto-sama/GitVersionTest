@@ -11,12 +11,4 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TAG=aboba" >> $GITHUB_ENV
-      - run: echo $TAG
-      
-  job2:
-    runs-on: ubuntu-latest
-    needs: debug
-    steps:
-      - run: echo $TAG
-       
+      - run: echo "${{ env.AB != '0' }}"
