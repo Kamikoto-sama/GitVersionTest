@@ -1,9 +1,6 @@
 name: Debug
 
 on: 
-  push:
-    paths:
-      - .github/workflows/debug.yml
   workflow_run:
     workflows: "Tag with SemVer"
     types:
@@ -19,10 +16,28 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - name: Dowload artifacts
-        uses: actions/download-artifact@v2.1.1
+      - name: 'Download artifact'
+        uses: actions/github-script@v6
         with:
-          name: version-tag
+          script: |
+            const artifactsInfo = await github.rest.actions.listWorkflowRunArtifacts({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            run_id: context.payload.workflow_run.id,
+            });
+
+            console.log(artifactsInfo);
+
+            const matchArtifact = artifactsInfo.data.artifacts.filter((artifact) => {
+             return artifact.name == "version-tag"
+            })[0];
+
+            const download = await github.rest.actions.downloadArtifact({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              artifact_id: matchArtifact.id,
+            });
+            const fs = require('fs');
+            fs.writeFileSync(`version-tag`, Buffer.from(download.data));
       - name: Display version
         run: cat version-tag
-          
