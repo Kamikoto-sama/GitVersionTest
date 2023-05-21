@@ -6,7 +6,8 @@ on:
     tags-ignore: "**"
   workflow_dispatch:
 
-permissions: write-all
+permissions: 
+  contents: write
 
 jobs:
   build-tag:
