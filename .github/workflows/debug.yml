@@ -27,12 +27,14 @@ jobs:
             run_id: context.payload.workflow_run.id,
             });
 
-            console.log(artifactsInfo);
+            console.log(artifactsInfo.data.artifacts);
 
             const matchArtifact = artifactsInfo.data.artifacts.filter((artifact) => {
              return artifact.name == "version-tag"
             })[0];
 
+            console.log(matchArtifact);
+            
             const download = await github.rest.actions.downloadArtifact({
               owner: context.repo.owner,
               repo: context.repo.repo,
