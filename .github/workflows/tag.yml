@@ -39,7 +39,7 @@ jobs:
           echo ${{ steps.gitversion.outputs.semVer }} > ./artifacts/version-tag
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
+        permissions: write-all
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           name: version-tag
           path: artifacts/version-tag
