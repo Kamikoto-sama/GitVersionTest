@@ -5,6 +5,8 @@ on:
     branches: master
     tags-ignore: "**"
 
+permissions: write-all
+
 jobs:
   build-tag:
     runs-on: ubuntu-latest
@@ -39,7 +41,6 @@ jobs:
           echo ${{ steps.gitversion.outputs.semVer }} > ./artifacts/version-tag
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
-        permissions: write-all
         with:
           name: version-tag
           path: artifacts/version-tag
