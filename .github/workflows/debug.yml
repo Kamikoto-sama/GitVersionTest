@@ -19,6 +19,7 @@ jobs:
       - name: 'Download artifact'
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const artifactsInfo = await github.rest.actions.listWorkflowRunArtifacts({
             owner: context.repo.owner,
