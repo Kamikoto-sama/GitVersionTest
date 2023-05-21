@@ -42,6 +42,8 @@ jobs:
               archive_format: 'zip'
             });
             const fs = require('fs');
-            fs.writeFileSync(`version-tag`, Buffer.from(download.data));
+            fs.writeFileSync(`version-tag.zip`, Buffer.from(download.data));
       - name: Display version
-        run: cat version-tag
+        run: |
+          unzip version-tag.zip
+          cat version-tag
