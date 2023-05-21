@@ -39,6 +39,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               artifact_id: matchArtifact.id,
+              archive_format: 'zip'
             });
             const fs = require('fs');
             fs.writeFileSync(`version-tag`, Buffer.from(download.data));
