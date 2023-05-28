@@ -4,7 +4,7 @@ on:
   workflow_call:
     outputs:
       tag: 
-        value: asdasd
+        value: aASDas8142
 
 jobs:
   tag:
@@ -24,3 +24,8 @@ jobs:
         run: echo "TAG=$(cat artifacts/version-tag)" >> $GITHUB_ENV
       - name: Tag
         run: echo $TAG
+        
+  retag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "TAG=123" >> $GITHUB_ENV
