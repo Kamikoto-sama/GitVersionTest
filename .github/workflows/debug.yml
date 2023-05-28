@@ -11,4 +11,12 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ env.AB != '0' }}"
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          run_id: ${{ github.event.workflow_run.id }}
+          name: version-tag
+          path: artifacts
+      - name: Echo
+        run: cat artifacts/version-tag
