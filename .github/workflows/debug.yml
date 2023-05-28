@@ -11,4 +11,4 @@ jobs:
   dbg:
     runs-on: ubuntu-latest
     steps:
-      - run: $VER
+      - run: echo $VER
