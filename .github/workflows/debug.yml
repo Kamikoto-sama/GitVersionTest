@@ -4,13 +4,13 @@ on:
   workflow_call:
     outputs:
       tag:
-        value: ${{ jobs.retag.outputs.tag }}
+        value: ${{ jobs.tag.outputs.tag || '123' }}
 
 jobs:
   tag:
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ env.TAG || '123' }}
+      tag: ${{ env.TAG }}
     steps:
       - name: Download artifact
         if: github.event.workflow_run.id
