@@ -4,10 +4,10 @@ on:
   push:
 
 env:
-  VAL: abc
+  VER: abc
 
 jobs:
-  tag:
+  dbg:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ env.VAL[1] }}"
+      - run: echo "${{ format("{0}-{1}", env.VER, github.sha) }}"
