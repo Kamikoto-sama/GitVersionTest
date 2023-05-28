@@ -12,6 +12,7 @@ jobs:
     outputs:
       tag: ${{ env.TAG }}
     steps:
+      - run: echo ${{ github.event.workflow_run.id }}
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
