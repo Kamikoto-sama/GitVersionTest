@@ -4,10 +4,11 @@ on:
   workflow_call:
     outputs:
       tag:
-        value: ${{ jobs.tag.outputs.tag || '123' }}
+        value: ${{ jobs.tag.outputs.tag || jobs.second.outputs.tag }}
 
 jobs:
   tag:
+    if: github.event.workflow_run.id
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ env.TAG }}
@@ -22,3 +23,10 @@ jobs:
       - name: Read
         if: github.event.workflow_run.id
         run: echo "TAG=$(cat artifacts/version-tag)" >> $GITHUB_ENV
+        
+  second:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ env.TAG }}
+    steps:
+      - run: echo "TAG=123" >> $GITHUB_ENV
