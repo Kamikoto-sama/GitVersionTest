@@ -3,12 +3,11 @@ name: Debug
 on: 
   workflow_call:
     outputs:
-      tag: ${{ jobs.debug.outputs.tag }}
+      tag: ${{ jobs.tag.outputs.tag }}
 
 jobs:
-  debug:
+  tag:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.id
     outputs:
       tag: ${{ env.TAG }}
     steps:
