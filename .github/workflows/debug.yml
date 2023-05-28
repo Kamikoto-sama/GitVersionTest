@@ -20,3 +20,5 @@ jobs:
           path: artifacts
       - name: Read
         run: echo "TAG=$(cat artifacts/version-tag)" >> $GITHUB_ENV
+      - name: Tag
+        run: echo $TAG
