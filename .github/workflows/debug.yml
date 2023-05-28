@@ -4,10 +4,11 @@ on:
   push:
 
 env:
-  VER: abc
-
+  VER: 1.2.3
+  SHA: ${{ github.SHA }}
+  
 jobs:
   dbg:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ format('{0}-{1}', env.VER, github.sha) }}"
+      - run: echo "$VER-$SHa"
