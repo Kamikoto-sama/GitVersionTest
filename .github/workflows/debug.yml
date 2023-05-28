@@ -8,6 +8,7 @@ on:
 
 jobs:
   tag:
+    if: github.event.workflow_run.id
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ env.TAG }}
