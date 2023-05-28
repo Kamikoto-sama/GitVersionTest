@@ -3,7 +3,7 @@ name: Debug
 on: 
   workflow_call:
     outputs:
-      tag: ${{ jobs.debug.outputs }}
+      tag: ${{ jobs.debug.outputs.tag }}
 
 jobs:
   debug:
