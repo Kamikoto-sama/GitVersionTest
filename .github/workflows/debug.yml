@@ -4,7 +4,7 @@ on:
   workflow_call:
     outputs:
       tag: 
-        value: ${{ jobs.tag.outputs.tag }}
+        value: asdasd
 
 jobs:
   tag:
