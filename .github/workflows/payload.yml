@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-tag
     steps:
-      - run: echo ${{ toJSON(needs.outputs) }}
+      - run: echo ${{ toJSON(needs.get-tag.outputs) }}
