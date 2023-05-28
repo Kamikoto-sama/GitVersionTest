@@ -5,7 +5,7 @@ on:
     outputs:
       tag:
         description: ADSD
-        value: 'aASDas8142'
+        value: ${{ jobs.retag.outputs.tag }}
 
 jobs:
   tag:
@@ -28,5 +28,7 @@ jobs:
         
   retag:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ env.TAG }}
     steps:
       - run: echo "TAG=123" >> $GITHUB_ENV
