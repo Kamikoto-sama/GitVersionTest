@@ -11,4 +11,5 @@ jobs:
   dbg:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${VER}-${SHA:0:8}"
+      - run: echo "TAG=${VER}-${SHA:0:8}" >> $GITHUB_ENV
+      - run: echo $TAG
