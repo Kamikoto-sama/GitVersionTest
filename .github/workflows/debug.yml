@@ -3,8 +3,9 @@ name: Debug
 on: 
   workflow_call:
     outputs:
-      tag: 
-        value: aASDas8142
+      tag:
+        description: ADSD
+        value: 'aASDas8142'
 
 jobs:
   tag:
