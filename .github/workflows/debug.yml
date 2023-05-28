@@ -13,3 +13,4 @@ jobs:
     steps:
       - run: echo "TAG=$VER-${SHA:0:8}" >> $GITHUB_ENV
       - run: echo "TAG=$TAG-${SHA:8:8}" >> $GITHUB_ENV
+      - run: echo $TAG
