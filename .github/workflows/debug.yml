@@ -10,4 +10,4 @@ jobs:
   dbg:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ format("{0}-{1}", env.VER, github.sha) }}"
+      - run: echo "${{ format('{0}-{1}', env.VER, github.sha) }}"
