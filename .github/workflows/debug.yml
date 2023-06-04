@@ -5,4 +5,4 @@ on:
 
 jobs:
   test:
-    uses: Kamikoto-sama/GitVersionTest/test.yml@master
+    uses: Kamikoto-sama/GitVersionTest/.github/workflows/../../test.yml@master
