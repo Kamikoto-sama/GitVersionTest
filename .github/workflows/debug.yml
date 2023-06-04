@@ -3,14 +3,6 @@ name: Debug
 on: 
   push:
 
-env:
-  VER: 1.2.3
-  SHA: ${{ github.SHA }}
-  
 jobs:
-  dbg:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "TAG=$VER-${SHA:0:8}" >> $GITHUB_ENV
-      - run: echo "TAG=$TAG-${SHA:8:8}" >> $GITHUB_ENV
-      - run: echo $TAG
+  test:
+    uses: Kamikoto-sama/GitVersionTest/test.yml@master
