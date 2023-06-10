@@ -10,4 +10,4 @@ jobs:
   test:
     uses: Kamikoto-sama/GitVersionTest/.github/workflows/payload.yml@master
     with:
-      value: ${{ env.COUNT }}
+      value: $COUNT
