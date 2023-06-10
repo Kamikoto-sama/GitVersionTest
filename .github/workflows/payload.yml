@@ -11,9 +11,14 @@ on:
       value:
         type: string
         required: true
+    outputs:
+      value: ${{ jobs.do-work.outputs.value }}
 
 jobs:
   do-work:
     runs-on: ubuntu-latest
+    outputs:
+      value: ${{ env.VER }}
     steps:
-      - run: echo "${{ inputs.value }}"
+      - run: echo "VER=${{ inputs.value }}" >> $GITHUB_ENV
+      - run: echo $VER
