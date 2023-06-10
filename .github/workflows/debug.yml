@@ -12,8 +12,9 @@ jobs:
     outputs:
       count: ${{ env.COUNT }}
     steps:
-      - name: Skip
-      
+      - if: false
+        run: exit 0
+  
   test:
     needs: set-vars
     uses: Kamikoto-sama/GitVersionTest/.github/workflows/payload.yml@master
