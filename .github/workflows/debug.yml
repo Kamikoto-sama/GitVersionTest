@@ -4,12 +4,13 @@ on:
   push:
 
 env:
-  MANUAL_RUN: ${{ github.event_name == 'workflow_dispatch' }}
-
-  DIFF_PATH_REGEX: ^Account/Account.Api
+  COUNT: 2
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ env.MANUAL_RUN }}"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: ${{ env.COUNT }}
