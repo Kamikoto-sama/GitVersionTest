@@ -3,20 +3,14 @@ name: Debug
 on: 
   push:
 
-env:
-  COUNT: asda
-
 jobs:
-  set-vars:
-    runs-on: ubuntu-latest
-    outputs:
-      count: ${{ env.COUNT }}
-    steps:
-      - if: false
-        run: exit 0
-  
   test:
-    needs: set-vars
     uses: Kamikoto-sama/GitVersionTest/.github/workflows/payload.yml@master
     with:
-      value: ${{ needs.set-vars.outputs.count }}
+      value: aboba
+      
+  set-vars:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo ${{ needs.test.outputs.value }}
