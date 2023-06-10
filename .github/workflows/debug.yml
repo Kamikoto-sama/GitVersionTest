@@ -7,7 +7,13 @@ env:
   COUNT: asda
 
 jobs:
+  set-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      count: ${{ env.COUNT }}
+      
   test:
+    needs: set-vars
     uses: Kamikoto-sama/GitVersionTest/.github/workflows/payload.yml@master
     with:
-      value: ${{ toJSON(env) }}
+      value: ${{ needs.set-vars.outputs.count }}
