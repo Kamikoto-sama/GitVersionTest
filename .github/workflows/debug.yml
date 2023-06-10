@@ -16,6 +16,6 @@ jobs:
   biba:
     runs-on: ubuntu-latest
     needs: test
-    if: test.outputs.passed
+    if: needs.test.outputs.passed
     steps:
       - run: echo "DONE"
