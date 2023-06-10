@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       count: ${{ env.COUNT }}
+    steps:
+      - name: Skip
       
   test:
     needs: set-vars
