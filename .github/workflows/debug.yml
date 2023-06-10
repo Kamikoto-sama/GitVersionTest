@@ -5,4 +5,17 @@ on:
 
 jobs:
   test:
-    uses: Kamikoto-sama/GitVersionTest/.github/workflows/../../test.yml@master
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ env.RES != '0' }}
+    steps:
+      - name: Skip
+        if: false
+        run: echo "aboba"
+        
+  biba:
+    runs-on: ubuntu-latest
+    needs: test
+    if: test.outputs.passed
+    steps:
+      - run: echo "DONE"
