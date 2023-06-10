@@ -12,7 +12,8 @@ on:
         type: string
         required: true
     outputs:
-      value: ${{ jobs.do-work.outputs.value }}
+      value: 
+        value: ${{ jobs.do-work.outputs.value }}
 
 jobs:
   do-work:
