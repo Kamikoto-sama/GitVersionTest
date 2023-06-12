@@ -6,6 +6,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ env.DIFF != '0' }}
     steps:
       - uses: actions/script@master
         id: commits_count
@@ -26,3 +28,9 @@ jobs:
       - run: echo "X=$(grep -cE 'aboba' diffs)" >> $GITHUB_ENV
       - if: env.DIFF != '0'
         run: echo $X
+
+  beta:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo "${{ needs.test.outputs.passed }}"
