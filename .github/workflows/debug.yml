@@ -7,4 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ fromJSON('[1, 2]').length }}"
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(context.event.commits)
