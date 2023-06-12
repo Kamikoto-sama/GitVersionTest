@@ -7,7 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     outputs:
-      passed: ${{ env.DIFF != '0' }}
+      passed: ${{ env.X != '0' }}
     steps:
       - uses: actions/script@master
         id: commits_count
@@ -25,9 +25,8 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file" >> diffs
           done
-      - run: echo "X=$(grep -cE 'aboba' diffs)" >> $GITHUB_ENV
-      - if: env.DIFF != '0'
-        run: echo $X
+      - run: echo "X=$(grep -cE 'debug' diffs)" >> $GITHUB_ENV
+      - run: echo "${{ env.ABOA != '0' }}"
 
   beta:
     runs-on: ubuntu-latest
