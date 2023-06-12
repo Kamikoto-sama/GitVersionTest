@@ -23,4 +23,5 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file" >> diffs
           done
-      - run: grep -cE 'aboba' diffs
+      - run: echo "X=$(grep -cE 'aboba' diffs)" >> $GITHUB_ENV
+      - run: echo $X
