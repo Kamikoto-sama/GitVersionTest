@@ -7,12 +7,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "${{ toJSON(github.event.commits.*.id) }}"
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v36
-      - name: Save all changed files
-        run: echo "${{ steps.changed-files.outputs.all_changed_files }}" > diffs
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file" >> diffs
+          done
       - run: cat diffs
