@@ -23,4 +23,4 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file" >> diffs
           done
-      - run: grep -cE 'debug' diffs
+      - run: grep -cE 'aboba' diffs
