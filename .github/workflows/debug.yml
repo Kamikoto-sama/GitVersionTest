@@ -24,4 +24,5 @@ jobs:
             echo "$file" >> diffs
           done
       - run: echo "X=$(grep -cE 'aboba' diffs)" >> $GITHUB_ENV
-      - run: echo $X
+      - if: env.DIFF != '0'
+        run: echo $X
