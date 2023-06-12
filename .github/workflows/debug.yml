@@ -32,5 +32,6 @@ jobs:
   beta:
     runs-on: ubuntu-latest
     needs: test
+    if: needs.test.outputs.passed
     steps:
       - run: echo "${{ needs.test.outputs.passed }}"
