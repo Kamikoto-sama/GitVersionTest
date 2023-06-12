@@ -11,10 +11,10 @@ jobs:
         id: commits_count
         with:
           script: return context.payload.commits.length
-      - run: echo "${{ steps.commits_count.outputs.value }}"
+      - run: echo "${{ steps.commits_count.outputs.result }}"
       - uses: actions/checkout@v3
         with:
-          fetch-depth: ${{ steps.commits_count.outputs.value }}
+          fetch-depth: ${{ steps.commits_count.outputs.result }}
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v36
