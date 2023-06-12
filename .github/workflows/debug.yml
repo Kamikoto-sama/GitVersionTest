@@ -7,10 +7,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJSON(github.event.commits.*.id) }}"
+      - uses: actions/script@master
+        id: commits_count
+        with:
+          script: return context.payload.commits.length
+      - run: echo "${{ steps.commits_count.outputs.value }}"
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: ${{ steps.commits_count.outputs.value }}
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v36
