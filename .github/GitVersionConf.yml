@@ -1,11 +1,15 @@
 mode: ContinuousDelivery
 next-version: 1.0.0
 
-major-version-bump-message: '@major'
-minor-version-bump-message: '@minor'
-patch-version-bump-message: '@patch'
+major-version-bump-message: '$major'
+minor-version-bump-message: '$minor'
+patch-version-bump-message: '$patch'
 
 branches:
   master:
     regex: ^master$
+    increment: Minor
+  non-master:
+    regex: ^(?!master)
     increment: Patch
+    tag: ''
