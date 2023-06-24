@@ -13,3 +13,4 @@ branches:
     regex: ^(?!master)
     increment: Patch
     tag: ''
+    source-branches: []
